@@ -1,6 +1,8 @@
 package com.example.lioveecommunityj.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -10,6 +12,10 @@ import lombok.Data;
 @ApiModel("出租信息")
 @TableName("t_apartment")
 public class ApartmentEntity {
+
+    @TableId(type = IdType.AUTO)
+    @ApiModelProperty("出租Id")
+    private Long apartment_id;
 
     @ApiModelProperty("联系人")
     @TableField("contacts")

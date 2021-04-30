@@ -36,7 +36,7 @@ public class UserEntity implements Serializable {
 
     @ApiModelProperty("余额")
     @TableField("remain")
-    private String remain;
+    private Double remain;
 
     @ApiModelProperty("角色")
     @TableField("right")

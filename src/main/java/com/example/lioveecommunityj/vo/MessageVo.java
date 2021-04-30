@@ -1,16 +1,13 @@
 package com.example.lioveecommunityj.vo;
 
+import com.example.lioveecommunityj.entity.MessageEntity;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
 import org.springframework.web.multipart.MultipartFile;
 
-public class MessageVo {
+@Data
+public class MessageVo extends MessageEntity {
     @ApiModelProperty("文件")
     private MultipartFile file;
-
-    @ApiModelProperty("内容")
-    private String content;
-
-    @ApiModelProperty("1 社区/2 企业")
-    private Integer flag;
 
 }
