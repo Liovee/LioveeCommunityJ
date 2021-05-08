@@ -39,11 +39,16 @@ public class MessageEntity {
     @TableField("flag")
     private Integer flag;
 
-    public MessageEntity(String content, Date publishTime, Long userId , Integer flag) {
+    @ApiModelProperty("公司名称")
+    @TableField("company")
+    private String company;
+
+    public MessageEntity(String content, Date publishTime, Long userId , Integer flag , String company) {
         this.content = content;
         this.publishTime = publishTime;
         this.userId = userId;
         this.flag = flag;
+        this.company = company;
     }
 
     public MessageEntity(String content, Date publishTime, Long userId, String file_path, Integer flag) {

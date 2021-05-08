@@ -45,4 +45,8 @@ public class UserEntity implements Serializable {
     @ApiModelProperty("密码")
     @TableField("pass_word")
     private String passWord;
+
+    @ApiModelProperty("充值时间")
+    @TableField("remain_time")
+    private String remainTime;
 }

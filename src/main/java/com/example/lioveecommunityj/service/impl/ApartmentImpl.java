@@ -41,7 +41,7 @@ public class ApartmentImpl implements ApartmentService {
 
         if (file.isEmpty()){
 
-            MessageEntity messageEntity = new MessageEntity(messageVo.getContent(),new Date(),userId,messageVo.getFlag());
+            MessageEntity messageEntity = new MessageEntity(messageVo.getContent(),new Date(),userId,messageVo.getFlag(),messageVo.getCompany());
 
             return "上传"+MyStringUtil.intToString(messageMapper.insert(messageEntity));
         }
@@ -62,6 +62,12 @@ public class ApartmentImpl implements ApartmentService {
         MessageEntity messageEntity = new MessageEntity(messageVo.getContent(),new Date(),userId,savefile+path,messageVo.getFlag());
 
         return "上传"+MyStringUtil.intToString(messageMapper.insert(messageEntity));
+    }
+
+    @Override
+    public PageInfo<MessageEntity> selectCommunityInformation(Integer flag, Integer pageNum , Integer pageSize) {
+        PageHelper.startPage(pageNum ,  pageSize);
+        return PageInfo.of(messageMapper.selectList(new QueryWrapper<MessageEntity>().eq("flag" , flag)));
     }
 
     @Override

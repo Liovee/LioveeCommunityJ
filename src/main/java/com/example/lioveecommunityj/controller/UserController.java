@@ -105,4 +105,21 @@ public class UserController {
         return JsonMessage.success(userService.rightUser(userId, right),"分配结果");
     }
 
+    @GetMapping("/queryRemain")
+    @ApiOperation(value = "查询用户余额",notes = "查询用户余额",httpMethod = "GET")
+    public JsonMessage queryRemain(HttpServletRequest request){
+
+        return JsonMessage.success(userService.queryRemain(request),"查询结果");
+    }
+
+    @GetMapping("/addRemain")
+    @ApiOperation(value = "充值用户余额",notes = "充值用户余额",httpMethod = "GET")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "phoneNum", value = "电话号码", dataType = "String", paramType = "query")
+    })
+    public JsonMessage addRemain(@RequestParam String phoneNum){
+
+        return JsonMessage.success(userService.addRemain(phoneNum),"充值结果");
+    }
+
 }

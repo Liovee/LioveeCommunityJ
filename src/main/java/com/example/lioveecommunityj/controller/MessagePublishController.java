@@ -32,6 +32,18 @@ public class MessagePublishController {
         return JsonMessage.success(apartmentService.insertCommunityInformation(messageVo,request),"上传结果");
     }
 
+    @GetMapping("/selectCommunityInformation")
+    @ApiOperation(value = "查询社区/企业信息",notes = "查询社区/企业信息",httpMethod = "GET")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "flag", value = "插入1社区/2企业信息", dataType = "Integer", paramType = "query"),
+            @ApiImplicitParam(name = "pageNum", value = "页面数量", dataType = "Integer", paramType = "query"),
+            @ApiImplicitParam(name = "pageSize", value = "页面大小", dataType = "Integer", paramType = "query")
+    })
+    public JsonMessage selectCommunityInformation(@RequestParam Integer flag , @RequestParam Integer pageNum , @RequestParam Integer pageSize){
+
+        return JsonMessage.success(apartmentService.selectCommunityInformation(flag , pageNum , pageSize),"查询结果");
+    }
+
     @GetMapping("/rentApartment")
     @ApiOperation(value = "查询所有出租房屋信息",notes = "查询所有出租房屋信息",httpMethod = "GET")
     @ApiImplicitParams({

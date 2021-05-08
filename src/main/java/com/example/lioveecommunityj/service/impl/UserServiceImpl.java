@@ -12,6 +12,7 @@ import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -65,5 +66,15 @@ public class UserServiceImpl implements UserService {
     @Override
     public String rightUser(Long userId, Integer right) {
         return "分配权限"+MyStringUtil.intToString(userMapper.update(new UserEntity(),new UpdateWrapper<UserEntity>().eq("user_id",userId).set("right",right)));
+    }
+
+    @Override
+    public Double queryRemain(HttpServletRequest request) {
+        return userMapper.selectOne(new QueryWrapper<UserEntity>().eq("phoneNum",request.getSession().getAttribute("phoneNum"))).getRemain();
+    }
+
+    @Override
+    public String addRemain(String phoneNum) {
+        return "充值"+MyStringUtil.intToString(userMapper.update(new UserEntity() , new UpdateWrapper<UserEntity>().eq("phoneNum",phoneNum)));
     }
 }

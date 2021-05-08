@@ -4,6 +4,8 @@ import com.example.lioveecommunityj.entity.UserEntity;
 import com.example.lioveecommunityj.vo.UserVo;
 import com.github.pagehelper.PageInfo;
 
+import javax.servlet.http.HttpServletRequest;
+
 public interface UserService {
     /**
      * 用户登录
@@ -44,4 +46,15 @@ public interface UserService {
      *删除用户
      */
     String rightUser(Long userId, Integer right);
+
+    /**
+     *查询余额
+     */
+    Double queryRemain(HttpServletRequest request);
+
+
+    /**
+     *删除用户
+     */
+    String addRemain(String phoneNum);
 }
