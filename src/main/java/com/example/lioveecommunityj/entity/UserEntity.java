@@ -50,4 +50,12 @@ public class UserEntity implements Serializable {
     @ApiModelProperty("充值时间")
     @TableField("remain_time")
     private Date remainTime;
+
+    @ApiModelProperty("出生日期")
+    @TableField("birth")
+    private Date birth;
+
+    @ApiModelProperty("身份证号")
+    @TableField("idCard")
+    private String idCard;
 }

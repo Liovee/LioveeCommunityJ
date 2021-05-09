@@ -5,6 +5,7 @@ import com.example.lioveecommunityj.vo.UserVo;
 import com.github.pagehelper.PageInfo;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 public interface UserService {
     /**
@@ -57,4 +58,9 @@ public interface UserService {
      *删除用户
      */
     String addRemain(String phoneNum);
+
+    /**
+     *查询用户年级大于60的用户
+     */
+    List<UserEntity> queryUserByAge();
 }

@@ -10,6 +10,8 @@ import com.example.lioveecommunityj.service.ForHelpService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -29,5 +31,13 @@ public class ForHelpImpl implements ForHelpService {
     @Override
     public String insertEntrust(HelpEntity helpEntity) {
         return "插入"+ MyStringUtil.intToString(forHelpMapper.insert(helpEntity));
+    }
+
+    @Override
+    public List<Integer> selectDataNotice(Date selectTime) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(selectTime);
+        cal.add(Calendar.MONTH, 1);
+        return forHelpMapper.selectDataNotice(selectTime,cal.getTime());
     }
 }

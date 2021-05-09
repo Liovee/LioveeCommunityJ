@@ -98,11 +98,11 @@ public class UserController {
     @ApiOperation(value = "分配用户权限",notes = "分配用户权限",httpMethod = "GET")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "userId", value = "用户Id", dataType = "Long", paramType = "query"),
-            @ApiImplicitParam(name = "right", value = "用户权限 1管理员 2普通用户", dataType = "Integer", paramType = "query")
+            @ApiImplicitParam(name = "rights", value = "用户权限 1管理员 2普通用户", dataType = "Integer", paramType = "query")
     })
-    public JsonMessage rightUser(@RequestParam Long userId,@RequestParam Integer right){
+    public JsonMessage rightUser(@RequestParam Long userId,@RequestParam Integer rights){
 
-        return JsonMessage.success(userService.rightUser(userId, right),"分配结果");
+        return JsonMessage.success(userService.rightUser(userId, rights),"分配结果");
     }
 
     @GetMapping("/queryRemain")
@@ -122,4 +122,10 @@ public class UserController {
         return JsonMessage.success(userService.addRemain(phoneNum),"充值结果");
     }
 
+    @GetMapping("/queryUserByAge")
+    @ApiOperation(value = "查询用户年级大于60的用户",notes = "查询用户年级大于60的用户",httpMethod = "GET")
+    public JsonMessage queryUserByAge(){
+
+        return JsonMessage.success(userService.queryUserByAge(),"查询结果");
+    }
 }

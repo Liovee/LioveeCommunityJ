@@ -4,13 +4,14 @@ import com.example.lioveecommunityj.common.message.JsonMessage;
 import com.example.lioveecommunityj.entity.HelpEntity;
 import com.example.lioveecommunityj.service.ForHelpService;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Date;
 
 @RestController
 @Api(tags = "请求帮助")
@@ -34,5 +35,14 @@ public class ForHelpController {
         }
 
         return JsonMessage.success(forHelpService.insertEntrust(helpEntity),"插入结果");
+    }
+
+    @GetMapping("/selectDataNotice")
+    @ApiOperation(value = "查询看板信息",notes = "查询看板信息,根据输入月份取标签",httpMethod = "GET")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "selectTime", value = "查询月份", dataType = "Date", paramType = "query")})
+    public JsonMessage selectDataNotice(@RequestParam Date selectTime){
+
+        return JsonMessage.success(forHelpService.selectDataNotice(selectTime),"查询结果");
     }
 }

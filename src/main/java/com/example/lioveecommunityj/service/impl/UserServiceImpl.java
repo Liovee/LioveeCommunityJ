@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -55,7 +56,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public String updateUser(UserEntity userEntity) {
-        return "修改"+MyStringUtil.intToString(userMapper.updateById(new UserEntity()));
+        return "修改"+MyStringUtil.intToString(userMapper.updateById(userEntity));
     }
 
     @Override
@@ -64,8 +65,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public String rightUser(Long userId, Integer right) {
-        return "分配权限"+MyStringUtil.intToString(userMapper.update(new UserEntity(),new UpdateWrapper<UserEntity>().eq("user_id",userId).set("right",right)));
+    public String rightUser(Long userId, Integer rights) {
+        return "分配权限"+MyStringUtil.intToString(userMapper.update(new UserEntity(),new UpdateWrapper<UserEntity>().eq("user_id",userId).set("rights",rights)));
     }
 
     @Override
@@ -76,5 +77,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public String addRemain(String phoneNum) {
         return "充值"+MyStringUtil.intToString(userMapper.update(new UserEntity() , new UpdateWrapper<UserEntity>().eq("phoneNum",phoneNum)));
+    }
+
+    @Override
+    public List<UserEntity> queryUserByAge() {
+        return userMapper.queryUserByAge();
     }
 }

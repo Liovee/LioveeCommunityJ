@@ -11,6 +11,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.util.Date;
 
 @Data
 @NoArgsConstructor
@@ -30,4 +31,7 @@ public class HelpEntity implements Serializable {
     @TableField("user_id")
     private Long userId;
 
+    @ApiModelProperty("帮助时间")
+    @TableField("help_time")
+    private Date helpTime;
 }
