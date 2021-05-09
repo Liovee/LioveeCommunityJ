@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50733
 File Encoding         : 65001
 
-Date: 2021-05-09 20:38:35
+Date: 2021-05-10 06:43:06
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -52,8 +52,9 @@ CREATE TABLE `t_help` (
   `tags` int(2) DEFAULT NULL COMMENT '请求类型 1卫生2绿化3治安4文化5医疗6社交7民主8教育9生活',
   `user_id` bigint(20) DEFAULT NULL COMMENT '用户id',
   `content` varchar(255) DEFAULT NULL COMMENT '请求内容',
+  `help_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '请求帮助时间',
   PRIMARY KEY (`help_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for t_message
@@ -83,5 +84,7 @@ CREATE TABLE `t_user` (
   `remain` decimal(10,2) DEFAULT NULL COMMENT '余额',
   `rights` int(2) DEFAULT NULL COMMENT '角色1管理员 2普通用户',
   `remain_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '充值时间',
+  `birth` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '出生日期',
+  `idCard` varchar(255) DEFAULT NULL COMMENT '身份证号码',
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
