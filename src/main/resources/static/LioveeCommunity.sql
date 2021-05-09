@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50733
 File Encoding         : 65001
 
-Date: 2021-05-08 12:24:47
+Date: 2021-05-09 20:38:35
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -77,11 +77,11 @@ DROP TABLE IF EXISTS `t_user`;
 CREATE TABLE `t_user` (
   `user_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
   `phone_num` varchar(11) NOT NULL COMMENT '手机号码',
-  `pass_word` varchar(20) NOT NULL COMMENT '密码',
+  `password` varchar(20) NOT NULL COMMENT '密码',
   `user_name` varchar(20) DEFAULT NULL COMMENT '姓名',
   `home_address` varchar(50) DEFAULT NULL COMMENT '家庭住址',
   `remain` decimal(10,2) DEFAULT NULL COMMENT '余额',
-  `right` tinyint(2) DEFAULT NULL COMMENT '角色1管理员 2普通用户',
+  `rights` int(2) DEFAULT NULL COMMENT '角色1管理员 2普通用户',
   `remain_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '充值时间',
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
