@@ -7,5 +7,5 @@ import lombok.Data;
 @Data
 public class UserVo {
     private String phoneNum;
-    private String passWord;
+    private String password;
 }

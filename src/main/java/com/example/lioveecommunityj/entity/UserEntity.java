@@ -11,11 +11,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.util.Date;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@TableName("t_comment")
+@TableName("t_user")
 @ApiModel("用户")
 public class UserEntity implements Serializable {
     @ApiModelProperty("姓名")
@@ -39,14 +40,14 @@ public class UserEntity implements Serializable {
     private Double remain;
 
     @ApiModelProperty("角色")
-    @TableField("right")
-    private Integer right;
+    @TableField("rights")
+    private Integer rights;
 
     @ApiModelProperty("密码")
-    @TableField("pass_word")
-    private String passWord;
+    @TableField("password")
+    private String password;
 
     @ApiModelProperty("充值时间")
     @TableField("remain_time")
-    private String remainTime;
+    private Date remainTime;
 }

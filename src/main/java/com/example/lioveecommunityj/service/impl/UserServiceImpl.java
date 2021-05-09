@@ -22,7 +22,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public String userLogin(UserVo userVo) {
-        if (userMapper.selectOne(new QueryWrapper<UserEntity>().eq("phone_num",userVo.getPhoneNum()).eq("pass_word",userVo.getPassWord()))==null){
+        if (userMapper.selectOne(new QueryWrapper<UserEntity>().eq("phone_num",userVo.getPhoneNum()).eq("password",userVo.getPassword()))==null){
             return "用户名或密码错误";
         }
         return "登录成功";

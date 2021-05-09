@@ -31,7 +31,7 @@ public class UserController {
             return JsonMessage.bizError(bindingResult.getAllErrors().get(0));
         }
         request.getSession().setAttribute("phoneNum",userVo.getPhoneNum());
-        return JsonMessage.success("登录成功","登录结果");
+        return JsonMessage.success(userService.userLogin(userVo),"登录结果");
     }
 
     @GetMapping("/selectNowUser")
