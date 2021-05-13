@@ -46,12 +46,12 @@ public class ApartmentImpl implements ApartmentService {
             return "上传"+MyStringUtil.intToString(messageMapper.insert(messageEntity));
         }
 
-        File savefile = new File("C:\\"+request.getSession().getAttribute("phoneNum"));
+        File savefile = new File("D:\\"+request.getSession().getAttribute("phoneNum") );
         if (!savefile.exists()){
             savefile.mkdirs();
         }
 
-        String path = ""+new Date().getTime()+file.getOriginalFilename();
+        String path =  "\\" + ""+new Date().getTime()+file.getOriginalFilename() ;
         try {
             file.transferTo(new File(savefile+path));
         } catch (IOException e) {

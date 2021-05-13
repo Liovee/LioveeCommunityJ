@@ -25,10 +25,7 @@ public class MessagePublishController {
 
     @PostMapping("/insertCommunityInformation")
     @ApiOperation(value = "插入社区/企业信息",notes = "插入社区/企业信息",httpMethod = "POST")
-    public JsonMessage insertCommunityInformation(@RequestBody @Valid MessageVo messageVo ,HttpServletRequest request,BindingResult bindingResult){
-        if (bindingResult.hasErrors()){
-            return JsonMessage.bizError(bindingResult.getAllErrors().get(0));
-        }
+    public JsonMessage insertCommunityInformation(MessageVo messageVo ,HttpServletRequest request){
         return JsonMessage.success(apartmentService.insertCommunityInformation(messageVo,request),"上传结果");
     }
 
