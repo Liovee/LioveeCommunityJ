@@ -41,6 +41,16 @@ public class UserController {
         return JsonMessage.success(userService.selectNowUser(request.getSession().getAttribute("phoneNum").toString()),"查询结果");
     }
 
+    @GetMapping("/selectUserById")
+    @ApiOperation(value = "查询用户通过Id",notes = "查询用户通过Id",httpMethod = "GET")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "userId", value = "用户Id", dataType = "Integer", paramType = "query")
+    })
+    public JsonMessage selectUserById(@RequestParam Long userId){
+
+        return JsonMessage.success(userService.selectUserById(userId),"查询结果");
+    }
+
     @GetMapping("/selectAllUser")
     @ApiOperation(value = "查询所有用户",notes = "查询所有用户",httpMethod = "GET")
     @ApiImplicitParams({

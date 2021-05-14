@@ -18,6 +18,12 @@ public interface UserService {
      */
     UserEntity selectNowUser(String phoneNum);
 
+
+    /**
+     *查询当前用户
+     */
+    UserEntity selectUserById(Long userId);
+
     /**
      *查询所有用户
      */

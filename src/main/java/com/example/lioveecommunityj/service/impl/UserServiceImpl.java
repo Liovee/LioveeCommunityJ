@@ -35,6 +35,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public UserEntity selectUserById(Long userId) {
+        return userMapper.selectOne(new QueryWrapper<UserEntity>().eq("user_id",userId));
+    }
+
+    @Override
     public PageInfo<UserEntity> selectAllUser(Integer pageNum, Integer pageSize) {
         PageHelper.startPage(pageNum,  pageSize);
         return PageInfo.of(userMapper.selectList(new QueryWrapper<>()));
