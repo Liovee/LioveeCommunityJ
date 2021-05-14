@@ -52,7 +52,7 @@ public class ApartmentImpl implements ApartmentService {
             savefile.mkdirs();
         }
 
-        String path =  "\\" + ""+new Date().getTime()+file.getOriginalFilename() ;
+        String path =  "\\" + ""+new Date().getTime()+"_"+file.getOriginalFilename() ;
         try {
             file.transferTo(new File(savefile+path));
         } catch (IOException e) {
