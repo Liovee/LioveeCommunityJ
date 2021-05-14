@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50733
 File Encoding         : 65001
 
-Date: 2021-05-10 06:43:06
+Date: 2021-05-14 15:55:10
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -25,6 +25,11 @@ CREATE TABLE `t_apartment` (
   `room_num` varchar(5) DEFAULT NULL COMMENT '房间号',
   `phone_num` varchar(20) DEFAULT NULL COMMENT '电话号码',
   `intentional_lessor` varchar(20) DEFAULT NULL COMMENT '意向出租人',
+  `status` int(1) DEFAULT NULL COMMENT '1未租2已租3到期4已被选',
+  `month_rent` double DEFAULT NULL COMMENT '月租',
+  `rent_time` int(11) DEFAULT NULL COMMENT '欲租时长',
+  `address` varchar(255) DEFAULT NULL COMMENT '地址',
+  `url` varchar(255) DEFAULT NULL COMMENT '文件存储路径',
   PRIMARY KEY (`apartment_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -40,6 +45,7 @@ CREATE TABLE `t_docking` (
   `helper_phone` varchar(20) DEFAULT NULL COMMENT '帮扶者电话号码',
   `helper_type` varchar(10) DEFAULT NULL COMMENT '帮扶类型',
   `status` int(2) DEFAULT NULL COMMENT '状态',
+  `comtent` varchar(255) DEFAULT NULL COMMENT '评价',
   PRIMARY KEY (`docking_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -53,6 +59,7 @@ CREATE TABLE `t_help` (
   `user_id` bigint(20) DEFAULT NULL COMMENT '用户id',
   `content` varchar(255) DEFAULT NULL COMMENT '请求内容',
   `help_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '请求帮助时间',
+  `give_user_id` bigint(20) DEFAULT NULL COMMENT '给予帮助人Id',
   PRIMARY KEY (`help_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
@@ -69,7 +76,7 @@ CREATE TABLE `t_message` (
   `flag` int(2) DEFAULT NULL COMMENT '插入1社区/2企业信息',
   `company` varchar(20) DEFAULT NULL COMMENT '公司名称',
   PRIMARY KEY (`message_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for t_user
@@ -87,4 +94,4 @@ CREATE TABLE `t_user` (
   `birth` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '出生日期',
   `idCard` varchar(255) DEFAULT NULL COMMENT '身份证号码',
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
