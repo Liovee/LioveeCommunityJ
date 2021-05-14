@@ -40,4 +40,8 @@ public class DockingEntity {
     @ApiModelProperty("状态")
     @TableField("status")
     private String status;
+
+    @ApiModelProperty("评价")
+    @TableField("comtent")
+    private String comtent;
 }

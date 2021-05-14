@@ -115,11 +115,12 @@ public class UserController {
     @GetMapping("/addRemain")
     @ApiOperation(value = "充值用户余额",notes = "充值用户余额",httpMethod = "GET")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "phoneNum", value = "电话号码", dataType = "String", paramType = "query")
+            @ApiImplicitParam(name = "phoneNum", value = "电话号码", dataType = "String", paramType = "query"),
+            @ApiImplicitParam(name = "money", value = "充值金额", dataType = "String", paramType = "query")
     })
-    public JsonMessage addRemain(@RequestParam String phoneNum){
+    public JsonMessage addRemain(@RequestParam String phoneNum,@RequestParam double money){
 
-        return JsonMessage.success(userService.addRemain(phoneNum),"充值结果");
+        return JsonMessage.success(userService.addRemain(phoneNum,money),"充值结果");
     }
 
     @GetMapping("/queryUserByAge")

@@ -7,9 +7,12 @@ import com.example.lioveecommunityj.entity.UserEntity;
 import com.example.lioveecommunityj.mapper.ForHelpMapper;
 import com.example.lioveecommunityj.mapper.UserMapper;
 import com.example.lioveecommunityj.service.ForHelpService;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -31,6 +34,19 @@ public class ForHelpImpl implements ForHelpService {
     @Override
     public String insertEntrust(HelpEntity helpEntity) {
         return "插入"+ MyStringUtil.intToString(forHelpMapper.insert(helpEntity));
+    }
+
+    @Override
+    public List<HelpEntity> selectMyHelp(Integer flag, HttpServletRequest request) {
+        Long userId = userMapper.selectOne(new QueryWrapper<UserEntity>().eq("phone_num",request.getSession().getAttribute("phoneNum"))).getUserId();
+        QueryWrapper wrapper = new QueryWrapper<HelpEntity>();
+        if (flag == 1){
+             wrapper.eq("user_id",userId);
+        }
+        if (flag == 2){
+            wrapper.eq("give_user_id",userId);
+        }
+        return forHelpMapper.selectList(wrapper);
     }
 
     @Override

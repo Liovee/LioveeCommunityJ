@@ -51,6 +51,16 @@ public class MessagePublishController {
         return JsonMessage.success(apartmentService.rentApartment(pageNum ,  pageSize),"出租查询结果");
     }
 
+    @GetMapping("/updateStatus")
+    @ApiOperation(value = "更新出租房屋状态",notes = "更新出租房屋状态",httpMethod = "GET")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "apartmentId", value = "出租信息Id", dataType = "Long", paramType = "query"),
+            @ApiImplicitParam(name = "status", value = "出租状态", dataType = "Integer", paramType = "query")})
+    public JsonMessage updateStatus(@RequestParam Long apartmentId ,@RequestParam Integer status){
+
+        return JsonMessage.success(apartmentService.updateStatus(apartmentId,status),"出租查询结果");
+    }
+
     @PostMapping("/insertApartment")
     @ApiOperation(value = "插入出租信息",notes = "插入出租信息",httpMethod = "POST")
     public JsonMessage insertApartment(@RequestBody @Valid ApartmentEntity apartmentEntity , HttpServletRequest request, BindingResult bindingResult){

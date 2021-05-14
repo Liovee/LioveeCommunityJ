@@ -57,7 +57,7 @@ public interface UserService {
     /**
      *删除用户
      */
-    String addRemain(String phoneNum);
+    String addRemain(String phoneNum,double money);
 
     /**
      *查询用户年级大于60的用户

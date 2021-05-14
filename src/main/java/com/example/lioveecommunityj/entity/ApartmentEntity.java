@@ -32,4 +32,24 @@ public class ApartmentEntity {
     @ApiModelProperty("意向出租人")
     @TableField("intentional_lessor")
     private String intentionalLessor;
+
+    @ApiModelProperty("1未租2已租3到期4已被选")
+    @TableField("status")
+    private Integer status;
+
+    @ApiModelProperty("月租")
+    @TableField("month_rent")
+    private String monthRent;
+
+    @ApiModelProperty("欲租时长")
+    @TableField("rent_time")
+    private String rentTime;
+
+    @ApiModelProperty("地址")
+    @TableField("address")
+    private String address;
+
+    @ApiModelProperty("文件存储路径")
+    @TableField("url")
+    private String url;
 }

@@ -75,8 +75,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public String addRemain(String phoneNum) {
-        return "充值"+MyStringUtil.intToString(userMapper.update(new UserEntity() , new UpdateWrapper<UserEntity>().eq("phoneNum",phoneNum)));
+    public String addRemain(String phoneNum,double money) {
+        return "充值"+MyStringUtil.intToString(userMapper.update(new UserEntity() , new UpdateWrapper<UserEntity>().eq("phoneNum",phoneNum).set("money",money)));
     }
 
     @Override

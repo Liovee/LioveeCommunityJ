@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 
 @RestController
@@ -35,6 +36,15 @@ public class ForHelpController {
         }
 
         return JsonMessage.success(forHelpService.insertEntrust(helpEntity),"插入结果");
+    }
+
+    @GetMapping("/selectMyHelp")
+    @ApiOperation(value = "请求/给予的帮助",notes = "请求/给予的帮助 1请求2给予",httpMethod = "GET")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "flag", value = "帮助类型", dataType = "Integer", paramType = "query")})
+    public JsonMessage selectMyHelp(@RequestParam Integer flag , HttpServletRequest request){
+
+        return JsonMessage.success(forHelpService.selectMyHelp(flag,request),"插入结果");
     }
 
     @GetMapping("/selectDataNotice")

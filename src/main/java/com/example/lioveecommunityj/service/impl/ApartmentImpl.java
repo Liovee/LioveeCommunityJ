@@ -1,6 +1,7 @@
 package com.example.lioveecommunityj.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.example.lioveecommunityj.common.util.MyStringUtil;
 import com.example.lioveecommunityj.entity.ApartmentEntity;
 import com.example.lioveecommunityj.entity.MessageEntity;
@@ -74,6 +75,11 @@ public class ApartmentImpl implements ApartmentService {
     public PageInfo<ApartmentEntity> rentApartment(Integer pageNum, Integer pageSize) {
         PageHelper.startPage(pageNum,  pageSize);
         return PageInfo.of(apartmentMapper.selectList(new QueryWrapper<ApartmentEntity>()));
+    }
+
+    @Override
+    public String updateStatus(Long apartmentId, Integer status) {
+        return "更新状态"+MyStringUtil.intToString(apartmentMapper.update(new ApartmentEntity(),new UpdateWrapper<ApartmentEntity>().eq("apartment_id",apartmentId).set("status",status)));
     }
 
     @Override
