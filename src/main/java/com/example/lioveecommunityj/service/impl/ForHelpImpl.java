@@ -55,6 +55,13 @@ public class ForHelpImpl implements ForHelpService {
     }
 
     @Override
+    public List<HelpEntity> selectGiveHelp(HttpServletRequest request) {
+        Long userId = userMapper.selectOne(new QueryWrapper<UserEntity>().eq("phone_num",request.getSession().getAttribute("phoneNum"))).getUserId();
+
+        return forHelpMapper.selectList(new QueryWrapper<HelpEntity>().eq("give_user_id",userId));
+    }
+
+    @Override
     public List<Integer> selectDataNotice(Date selectTime) {
         Calendar cal = Calendar.getInstance();
         cal.setTime(selectTime);

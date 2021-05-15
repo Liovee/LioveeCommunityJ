@@ -25,6 +25,12 @@ public interface ForHelpService {
      */
     List<HelpEntity> selectMyHelp(Integer flag , HttpServletRequest request);
 
+
+    /**
+     * 请求/给予的帮助
+     */
+    List<HelpEntity> selectGiveHelp(HttpServletRequest request);
+
     /**
      * 查询看板信息
      * @param selectTime

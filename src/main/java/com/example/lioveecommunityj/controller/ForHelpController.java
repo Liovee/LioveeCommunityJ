@@ -46,7 +46,14 @@ public class ForHelpController {
             @ApiImplicitParam(name = "flag", value = "帮助类型", dataType = "Integer", paramType = "query")})
     public JsonMessage selectMyHelp(@RequestParam Integer flag , HttpServletRequest request){
 
-        return JsonMessage.success(forHelpService.selectMyHelp(flag,request),"插入结果");
+        return JsonMessage.success(forHelpService.selectMyHelp(flag,request),"查询结果");
+    }
+
+    @GetMapping("/selectGiveHelp")
+    @ApiOperation(value = "查询属于给予帮助人的信息",notes = "查询属于给予帮助人的信息",httpMethod = "GET")
+    public JsonMessage selectGiveHelp(HttpServletRequest request){
+
+        return JsonMessage.success(forHelpService.selectGiveHelp(request),"查询结果");
     }
 
     @GetMapping("/selectDataNotice")
