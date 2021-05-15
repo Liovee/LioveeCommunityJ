@@ -14,10 +14,8 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @TableName("t_help")
-@ApiModel("用户")
+@ApiModel("请求帮助")
 public class HelpEntity implements Serializable {
     @ApiModelProperty("请求ID")
     @TableId(type = IdType.AUTO)
