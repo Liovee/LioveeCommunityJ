@@ -2,6 +2,7 @@ package com.example.lioveecommunityj.service;
 
 import com.example.lioveecommunityj.entity.HelpEntity;
 import com.example.lioveecommunityj.entity.UserEntity;
+import com.example.lioveecommunityj.vo.HelpVo;
 import com.github.pagehelper.PageInfo;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +18,7 @@ public interface ForHelpService {
     /**
      * 插入委托
      */
-    String insertEntrust(HelpEntity helpEntity);
+    String insertEntrust(HelpVo helpVo);
 
     /**
      * 请求/给予的帮助

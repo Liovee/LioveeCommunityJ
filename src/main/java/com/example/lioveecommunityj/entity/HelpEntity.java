@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @TableName("t_help")
@@ -21,9 +22,9 @@ public class HelpEntity implements Serializable {
     @TableId(type = IdType.AUTO)
     private Long helpId;
 
-    @ApiModelProperty("请求类型 1卫生2绿化3治安4文化5医疗6社交7民主8教育9生活")
+    @ApiModelProperty("请求类型 1卫生2绿化3治安4文化5医疗6社交7民主8教育9生活 ")
     @TableField("tags")
-    private Integer tags;
+    private String tags;
 
     @ApiModelProperty("用户id")
     @TableField("user_id")

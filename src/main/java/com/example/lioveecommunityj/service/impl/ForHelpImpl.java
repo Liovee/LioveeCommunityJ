@@ -7,8 +7,10 @@ import com.example.lioveecommunityj.entity.UserEntity;
 import com.example.lioveecommunityj.mapper.ForHelpMapper;
 import com.example.lioveecommunityj.mapper.UserMapper;
 import com.example.lioveecommunityj.service.ForHelpService;
+import com.example.lioveecommunityj.vo.HelpVo;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -32,7 +34,10 @@ public class ForHelpImpl implements ForHelpService {
     }
 
     @Override
-    public String insertEntrust(HelpEntity helpEntity) {
+    public String insertEntrust(HelpVo helpVo) {
+        HelpEntity helpEntity = new HelpEntity();
+        BeanUtils.copyProperties(helpVo,helpEntity);
+        helpEntity.setTags(helpVo.getTags().toString());
         return "插入"+ MyStringUtil.intToString(forHelpMapper.insert(helpEntity));
     }
 

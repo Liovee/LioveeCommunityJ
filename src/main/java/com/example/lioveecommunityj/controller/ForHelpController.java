@@ -3,6 +3,7 @@ package com.example.lioveecommunityj.controller;
 import com.example.lioveecommunityj.common.message.JsonMessage;
 import com.example.lioveecommunityj.entity.HelpEntity;
 import com.example.lioveecommunityj.service.ForHelpService;
+import com.example.lioveecommunityj.vo.HelpVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -16,6 +17,7 @@ import java.util.Date;
 
 @RestController
 @Api(tags = "请求帮助")
+@RequestMapping("/forHelp")
 public class ForHelpController {
 
     @Autowired
@@ -30,12 +32,12 @@ public class ForHelpController {
 
     @PostMapping("/insertEntrust")
     @ApiOperation(value = "插入委托/插入信息请求",notes = "插入委托/插入信息请求",httpMethod = "POST")
-    public JsonMessage insertEntrust(@RequestBody HelpEntity helpEntity, BindingResult bindingResult){
+    public JsonMessage insertEntrust(@RequestBody HelpVo helpVo, BindingResult bindingResult){
         if (bindingResult.hasErrors()){
             return JsonMessage.paramError(bindingResult.getAllErrors().get(0));
         }
 
-        return JsonMessage.success(forHelpService.insertEntrust(helpEntity),"插入结果");
+        return JsonMessage.success(forHelpService.insertEntrust(helpVo),"插入结果");
     }
 
     @GetMapping("/selectMyHelp")
