@@ -41,4 +41,8 @@ public class HelpEntity implements Serializable {
     @ApiModelProperty("请求内容")
     @TableField("content")
     private String content;
+
+    @ApiModelProperty("预约时间")
+    @TableField("appointmentTime")
+    private Date appointmentTime;
 }

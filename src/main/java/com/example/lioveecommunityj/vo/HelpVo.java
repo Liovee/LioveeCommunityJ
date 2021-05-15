@@ -25,4 +25,7 @@ public class HelpVo {
 
     @ApiModelProperty("请求内容")
     private String content;
+
+    @ApiModelProperty("预约时间")
+    private Date appointmentTime;
 }
