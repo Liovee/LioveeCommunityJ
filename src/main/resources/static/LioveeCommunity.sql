@@ -55,7 +55,7 @@ CREATE TABLE `t_docking` (
 DROP TABLE IF EXISTS `t_help`;
 CREATE TABLE `t_help` (
   `help_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '请求ID',
-  `tags` int(2) DEFAULT NULL COMMENT '请求类型 1卫生2绿化3治安4文化5医疗6社交7民主8教育9生活',
+  `tags` varchar(20) DEFAULT NULL COMMENT '请求类型 1卫生2绿化3治安4文化5医疗6社交7民主8教育9生活',
   `user_id` bigint(20) DEFAULT NULL COMMENT '用户id',
   `content` varchar(255) DEFAULT NULL COMMENT '请求内容',
   `help_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '请求帮助时间',
