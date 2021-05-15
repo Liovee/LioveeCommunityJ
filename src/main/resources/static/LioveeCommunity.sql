@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50733
 File Encoding         : 65001
 
-Date: 2021-05-14 15:55:10
+Date: 2021-05-15 16:51:19
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -59,9 +59,10 @@ CREATE TABLE `t_help` (
   `user_id` bigint(20) DEFAULT NULL COMMENT '用户id',
   `content` varchar(255) DEFAULT NULL COMMENT '请求内容',
   `help_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '请求帮助时间',
-  `give_user_id` bigint(20) DEFAULT NULL COMMENT '给予帮助人Id',
+  `give_user_id` bigint(20) unsigned zerofill DEFAULT NULL COMMENT '给予帮助人Id',
+  `appointment_time` datetime DEFAULT NULL COMMENT '预约时间',
   PRIMARY KEY (`help_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for t_message
