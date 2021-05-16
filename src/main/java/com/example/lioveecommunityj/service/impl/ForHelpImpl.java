@@ -2,6 +2,7 @@ package com.example.lioveecommunityj.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.lioveecommunityj.common.util.MyStringUtil;
+import com.example.lioveecommunityj.dto.HelpDto;
 import com.example.lioveecommunityj.entity.HelpEntity;
 import com.example.lioveecommunityj.entity.UserEntity;
 import com.example.lioveecommunityj.mapper.ForHelpMapper;
@@ -18,6 +19,8 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 @Service
 public class ForHelpImpl implements ForHelpService {
@@ -42,7 +45,7 @@ public class ForHelpImpl implements ForHelpService {
     }
 
     @Override
-    public List<HelpEntity> selectMyHelp(Integer flag, HttpServletRequest request) {
+    public List<HelpDto> selectMyHelp(Integer flag, HttpServletRequest request) {
         Long userId = userMapper.selectOne(new QueryWrapper<UserEntity>().eq("phone_num",request.getSession().getAttribute("phoneNum"))).getUserId();
         QueryWrapper wrapper = new QueryWrapper<HelpEntity>();
         if (flag == 1){
@@ -51,7 +54,15 @@ public class ForHelpImpl implements ForHelpService {
         if (flag == 2){
             wrapper.eq("give_user_id",userId);
         }
-        return forHelpMapper.selectList(wrapper);
+        List<HelpEntity> helpEntities = forHelpMapper.selectList(wrapper);
+        List<HelpDto> helpDtos = helpEntities.stream().map(e->{
+            HelpDto dto = new HelpDto();
+            BeanUtils.copyProperties(e,dto);
+            dto.setUserName(userMapper.selectOne(new QueryWrapper<UserEntity>().eq("user_id",e.getUserId())).getUserName());
+            dto.setPhoneNum(userMapper.selectOne(new QueryWrapper<UserEntity>().eq("user_id",e.getUserId())).getPhoneNum());
+            return dto;
+        }).collect(Collectors.toList());
+        return helpDtos;
     }
 
     @Override

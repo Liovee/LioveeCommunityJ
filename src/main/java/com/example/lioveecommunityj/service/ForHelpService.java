@@ -1,5 +1,6 @@
 package com.example.lioveecommunityj.service;
 
+import com.example.lioveecommunityj.dto.HelpDto;
 import com.example.lioveecommunityj.entity.HelpEntity;
 import com.example.lioveecommunityj.entity.UserEntity;
 import com.example.lioveecommunityj.vo.HelpVo;
@@ -23,7 +24,7 @@ public interface ForHelpService {
     /**
      * 请求/给予的帮助
      */
-    List<HelpEntity> selectMyHelp(Integer flag , HttpServletRequest request);
+    List<HelpDto> selectMyHelp(Integer flag , HttpServletRequest request);
 
 
     /**
