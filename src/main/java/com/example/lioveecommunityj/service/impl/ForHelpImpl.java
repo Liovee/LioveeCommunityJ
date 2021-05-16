@@ -62,10 +62,16 @@ public class ForHelpImpl implements ForHelpService {
     }
 
     @Override
-    public List<Integer> selectDataNotice(Date selectTime) {
+    public List<Integer> selectDataNotice(Date selectTime,Integer flag) {
         Calendar cal = Calendar.getInstance();
         cal.setTime(selectTime);
         cal.add(Calendar.MONTH, 1);
-        return forHelpMapper.selectDataNotice(selectTime,cal.getTime());
+        if (flag == 1){
+            return forHelpMapper.selectHelpNotice(selectTime,cal.getTime());
+        }
+        if (flag == 2){
+            return forHelpMapper.selectFankuiNotice(selectTime,cal.getTime());
+        }
+        return null;
     }
 }

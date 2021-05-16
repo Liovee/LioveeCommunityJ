@@ -59,9 +59,10 @@ public class ForHelpController {
     @GetMapping("/selectDataNotice")
     @ApiOperation(value = "查询看板信息",notes = "查询看板信息,根据输入月份取标签",httpMethod = "GET")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "selectTime", value = "查询月份", dataType = "Date", paramType = "query")})
-    public JsonMessage selectDataNotice(@RequestParam Date selectTime){
+            @ApiImplicitParam(name = "selectTime", value = "查询月份", dataType = "Date", paramType = "query"),
+            @ApiImplicitParam(name = "flag", value = "类型", dataType = "1帮助2反馈", paramType = "query")})
+    public JsonMessage selectDataNotice(@RequestParam Date selectTime,@RequestParam Integer flag){
 
-        return JsonMessage.success(forHelpService.selectDataNotice(selectTime),"查询结果");
+        return JsonMessage.success(forHelpService.selectDataNotice(selectTime,flag),"查询结果");
     }
 }

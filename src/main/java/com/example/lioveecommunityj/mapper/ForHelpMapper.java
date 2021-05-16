@@ -10,6 +10,9 @@ import java.util.List;
 
 @Mapper
 public interface ForHelpMapper extends BaseMapper<HelpEntity> {
-    @Select("select tags,COUNT(*) from t_help GROUP BY tags where selectTime<help_time and selectTimeAddOne>help_time")
-    List<Integer> selectDataNotice(Date selectTime , Date selectTimeAddOne);
+    @Select("select a.tags,COUNT(*) from (SELECT * from t_help where status IS not NULL) a GROUP BY tags  where selectTime<help_time and selectTimeAddOne>help_time")
+    List<Integer> selectHelpNotice(Date selectTime , Date selectTimeAddOne);
+
+    @Select("select a.tags,COUNT(*) from (SELECT * from t_help where status IS NULL) a GROUP BY tags  where selectTime<help_time and selectTimeAddOne>help_time")
+    List<Integer> selectFankuiNotice(Date selectTime , Date selectTimeAddOne);
 }

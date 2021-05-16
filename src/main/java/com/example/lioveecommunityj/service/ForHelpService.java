@@ -36,5 +36,5 @@ public interface ForHelpService {
      * @param selectTime
      * @return
      */
-    List<Integer> selectDataNotice(Date selectTime);
+    List<Integer> selectDataNotice(Date selectTime,Integer flag);
 }
