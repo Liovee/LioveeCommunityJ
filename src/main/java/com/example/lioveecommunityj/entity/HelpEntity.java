@@ -47,6 +47,6 @@ public class HelpEntity implements Serializable {
     private Date appointmentTime;
 
     @ApiModelProperty("请求状态 1未完成 2已完成")
-    @TableField("status")
-    private Date status;
+    @TableField("ask_status")
+    private Date askStatus;
 }
