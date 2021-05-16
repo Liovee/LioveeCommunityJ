@@ -1,5 +1,6 @@
 package com.example.lioveecommunityj.vo;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
@@ -28,4 +29,7 @@ public class HelpVo {
 
     @ApiModelProperty("预约时间")
     private Date appointmentTime;
+
+    @ApiModelProperty("请求状态 1未完成 2已完成")
+    private Integer askStatus;
 }
